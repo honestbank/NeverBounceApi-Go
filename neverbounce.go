@@ -123,6 +123,7 @@ func MakeRequest(method string, url string, data interface{}) ([]byte, error) {
 	if err != nil {
 		return nil, err
 	}
+	defer res.Body.Close()
 
 	// handle 5xx HTTP codes
 	if res.StatusCode >= 400 {
